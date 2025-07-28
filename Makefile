@@ -40,7 +40,14 @@ dev-deps:
 	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 # Run all checks (used in CI)
-ci: fmt vet test lint
+ci: fmt vet test lint fmt-check
+
+# Check if code is formatted
+fmt-check:
+	@if [ -n "$$(go fmt ./...)" ]; then \
+		echo "Code is not formatted. Run 'make fmt' to fix."; \
+		exit 1; \
+	fi
 
 # Update dependencies
 update:

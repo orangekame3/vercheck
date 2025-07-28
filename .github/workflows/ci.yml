@@ -88,11 +88,8 @@ jobs:
 
     - name: Verify formatting
       run: |
-        if [ "$(gofmt -s -l . | wc -l)" -gt 0 ]; then
-          echo "Found unformatted files:"
-          gofmt -s -l .
-          exit 1
-        fi
+        go fmt ./...
+        git diff --exit-code
       shell: bash
 
     - name: Run go vet
