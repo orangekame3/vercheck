@@ -1,0 +1,99 @@
+run:
+  timeout: 3m
+  issues-exit-code: 1
+  tests: true
+
+linters:
+  enable:
+    - gofmt
+    - goimports
+    - revive
+    - govet
+    - errcheck
+    - staticcheck
+    - unused
+    - gosimple
+    - ineffassign
+    - typecheck
+    - gosec
+    - unconvert
+    - dupl
+    - goconst
+    - gocyclo
+    - gocognit
+    - asciicheck
+    - gofumpt
+    - prealloc
+    - predeclared
+    - nilerr
+    - exhaustive
+    - copyloopvar
+    - whitespace
+    - godot
+    - promlinter
+    - testpackage
+    - tparallel
+
+  disable:
+    - depguard
+    - dogsled
+    - funlen
+    - gochecknoglobals
+    - gochecknoinits
+    - godox
+    - lll
+    - misspell
+    - nakedret
+    - nestif
+    - noctx
+    - nolintlint
+    - rowserrcheck
+    - stylecheck
+    - unparam
+    - wrapcheck
+    - wsl
+
+linters-settings:
+  errcheck:
+    check-type-assertions: false
+    check-blank: false
+
+  gocyclo:
+    min-complexity: 10
+
+  gocognit:
+    min-complexity: 15
+
+  dupl:
+    threshold: 100
+
+  goconst:
+    min-len: 3
+    min-occurrences: 3
+
+  gosec:
+    excludes:
+      - G104 # Audit errors not checked
+      - G304 # Audit file path provided as argument
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gosec
+        - dupl
+        - testpackage
+
+    - path: example/
+      linters:
+        - errcheck
+        - gosec
+
+    - linters:
+        - staticcheck
+      text: "SA1019:" # Using deprecated function
+
+  max-issues-per-linter: 50
+  max-same-issues: 3
+
+  exclude-use-default: false
