@@ -47,6 +47,15 @@ update:
 	go get -u ./...
 	go mod tidy
 
+# Verify go.mod is clean
+mod-verify:
+	go mod tidy
+	@if [ -f go.sum ]; then \
+		git diff --exit-code go.mod go.sum; \
+	else \
+		git diff --exit-code go.mod; \
+	fi
+
 # Create a new release tag
 release:
 	@if [ -z "$(VERSION)" ]; then \

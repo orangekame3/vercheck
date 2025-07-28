@@ -51,7 +51,7 @@ The library consists of the following components:
 
 ### Key Design Decisions
 
-- Zero external dependencies - uses only Go standard library
+- Zero external dependencies - uses only Go standard library (no go.sum file needed)
 - Graceful error handling - never disrupts the host CLI tool
 - Simple API - single function call with options struct
 - Automatic installation method detection (Homebrew vs go install)

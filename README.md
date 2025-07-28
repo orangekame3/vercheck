@@ -7,7 +7,7 @@ A lightweight Go library that helps CLI tools check for newer versions on GitHub
 - 🚀 Check GitHub releases for newer versions
 - 📦 Automatic detection of installation method (Homebrew or go install)
 - 🔔 User-friendly update notifications
-- 🛠 Zero dependencies (uses only Go standard library)
+- 🛠 Zero external dependencies (uses only Go standard library)
 - ⚡ Lightweight and fast
 
 ## Installation
