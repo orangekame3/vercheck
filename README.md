@@ -23,11 +23,13 @@ Add vercheck to your CLI tool's main function:
 ```go
 import "github.com/orangekame3/vercheck"
 
+version := "v1.2.3" // Replace with your current CLI version
+
 func main() {
     vercheck.Check(vercheck.Options{
-        CurrentVersion: "v1.2.3",
-        RepoOwner: "orangekame3",
-        RepoName: "lazypoetry",
+        CurrentVersion: version,
+        RepoOwner: "orangekame3", // GitHub repository owner
+        RepoName: "lazypoetry", // GitHub repository name
     })
     
     // Your CLI tool logic here...
@@ -66,10 +68,10 @@ type Options struct {
 
 vercheck automatically detects how your CLI tool was installed and suggests the appropriate update command:
 
-| Installation Method | Detection | Update Command |
-|-------------------|-----------|----------------|
-| Homebrew | Path contains `/Cellar/` | `brew upgrade <tool>` |
-| go install | Default | `go install github.com/<owner>/<tool>@latest` |
+| Installation Method | Detection                | Update Command                                |
+| ------------------- | ------------------------ | --------------------------------------------- |
+| Homebrew            | Path contains `/Cellar/` | `brew upgrade <tool>`                         |
+| go install          | Default                  | `go install github.com/<owner>/<tool>@latest` |
 
 ## How It Works
 
